@@ -1,58 +1,103 @@
 var title = document.querySelector('.title');
 var startBtn = document.querySelector('.start-btn');
-const questions = [
+var questions = [
     {
         question: "What does CSS stand for?",
-        answers: {
-            a: 'California Sauteed Shrimp',
-            b: 'Cascading Style Sheet',
-            c: 'Carlos Sounds Sleepy',
-            d: 'Corporate Standing Services'
-        },
-        correctAnswer: 'b'
+        answers: [
+            'California Sauteed Shrimp',
+            'Cascading Style Sheet',
+            'Carlos Sounds Sleepy',
+            'Corporate Standing Services'
+        ],
+        correctAnswer: 'Cascading Style Sheet'
     },
     {
         question: '___ is the standard markup language for creating web pages.',
-        answers: {
-            a: "NFT",
-            b: "Javascript",
-            c: "HTML",
-            d: "ESPN"
-        },
-        correctAnswer: 'c'
+        answers: [
+            "NFT",
+            "Javascript",
+            "HTML",
+            "ESPN"
+        ],
+        correctAnswer: 'HTML'
     },
     {
         question: 'Which of these is NOT a way to assign a variable?',
-        answers: {
-            a: "bruh",
-            b: "let",
-            c: "const",
-            d: "var"
-        },
-        correctAnswer: "a"
+        answers: [
+            "bruh",
+            "let",
+            "const",
+            "var"
+        ],
+        correctAnswer: "bruh"
     },
     {
         question: "User behavior, such as a mouse click, is referred to as a(n) _____.",
-        answers: {
-            a: "show",
-            b: "event",
-            c: "party",
-            d: "hootenanny"
-        },
-        correctAnswer: "b"
+        answers: [
+            "show",
+            "event",
+            "party",
+            "hootenanny"
+        ],
+        correctAnswer: "event"
     }
 ];
 
-function startQuiz() {
-    //var startBtn = document.querySelector(".start-btn");
-    //console.log(startBtn);
+const removeElement = (...els) => {
+    for (let el of els) el.remove();
+}
+var rules = document.getElementById('rules');
+var questionBox = document.getElementById("questionsBox");
+var answerBox = document.getElementById("answerBox");
+var scoreBox = document.getElementById("scoreBox");
+var correctWrong = document.getElementById('correct-wrongBox');
+var questionCount = 0;
+let currentScore = 0;
+var timeLeft = 60;
 
+
+function startQuiz() {
     startTimer();
+
+    removeElement(startBtn);
+    removeElement(rules);
+    if (questionCount < questions.length) {
+        questionBox.innerHTML = '<div>' + questions[questionCount].question + '</div>';
+        answerBox.textContent = "";
+        for (let i = 0; i < questions[questionCount].answers.length; i++) {
+            let buttonel = document.createElement('button');
+            buttonel.innerText = questions[questionCount].answers[i];
+            buttonel.setAttribute('data-id', i);
+            buttonel.addEventListener('click', function (event) {
+                event.stopPropagation();
+                if (buttonel.innerText === questions[questionCount].correctAnswer) {
+                    currentScore = currentScore + 100;
+                    correctWrong.innerHTML = '<div class="correct">' + 'Correct!' + '</div>'
+                    // function to proceed to next question
+                } else {
+                    currentScore = currentScore - 50;
+                    timeLeft = timeLeft - 10;
+                    correctWrong.innerHTML = '<div class="wrong">' + 'Incorrect!' + '</div>'
+                }
+                questionBox.innerHTML = "";
+                if (questionCount === questions.length) {
+                    return;
+                } else {
+                    questionCount++;
+                    //function to proceed to next question
+                }
+            });
+            answerBox.append(buttonel);
+        }
+    }
+
+
+
+
 
 };
 
 function startTimer() {
-    var timeLeft = 60;
     var timerBegin = setInterval(function () {
         if (timeLeft > 0) {
             title.textContent = timeLeft;
@@ -60,9 +105,11 @@ function startTimer() {
         } else {
             title.textContent = "TIME'S UP!!!";
             clearInterval(timerBegin);
+            //function for capturing user score
         }
     }, 1000)
 };
+
 
 
 startBtn.addEventListener('click', startQuiz);
