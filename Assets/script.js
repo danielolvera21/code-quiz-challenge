@@ -56,8 +56,7 @@ let currentScore = 0;
 var timeLeft = 60;
 
 
-function startQuiz() {
-    startTimer();
+function showQuestions() {
 
     removeElement(startBtn);
     removeElement(rules);
@@ -84,20 +83,16 @@ function startQuiz() {
                     return;
                 } else {
                     questionCount++;
-                    //function to proceed to next question
+                    showQuestions()
                 }
             });
             answerBox.append(buttonel);
         }
     }
-
-
-
-
-
 };
 
 function startTimer() {
+    showQuestions()
     var timerBegin = setInterval(function () {
         if (timeLeft > 0) {
             title.textContent = timeLeft;
@@ -112,4 +107,4 @@ function startTimer() {
 
 
 
-startBtn.addEventListener('click', startQuiz);
+startBtn.addEventListener('click', startTimer);

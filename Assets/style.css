@@ -1,11 +1,22 @@
 * {
   box-sizing: border-box;
+  background-color: silver;
 }
 
 .title {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.start-btn {
+  text-align: center;
+}
+
+.rules {
+  text-align: center;
+  padding-left: 10rem;
+  padding-right: 10rem;
 }
 
 .correct {
