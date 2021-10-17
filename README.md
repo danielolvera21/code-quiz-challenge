@@ -1,42 +1,25 @@
 # 04 Web APIs: Code Quiz
 
-As you proceed in your career as a web developer, you will probably be asked to complete a coding assessment, which is typically a combination of multiple-choice questions and interactive challenges. Build a timed code quiz with multiple-choice questions. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
+## Description
 
-## User Story
+A timed coding quiz with multiple choice questions, featuring dynamically updated HTML and CSS.
 
-```
-AS A coding bootcamp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+## Technologies Used
 
-## Acceptance Criteria
+- HTML
+- CSS
+- Javascript
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
-```
+## Screenshot
 
-The following animation demonstrates the application functionality:
+![codescreen1](https://user-images.githubusercontent.com/83250389/137615793-b40b42db-464b-41d9-b9ee-8df04e657dbb.png)
 
-![code quiz](./Assets/04-web-apis-homework-demo.gif)
+![codescreen2](https://user-images.githubusercontent.com/83250389/137615824-16b359d0-c7f5-4781-ae0b-fe834d143e2a.png)
 
-### Review
+## Links
 
-You are required to submit the following for review:
+Github:
+https://github.com/danielolvera21/code-quiz-challenge
 
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+Deployed Page:
+https://danielolvera21.github.io/code-quiz-challenge/
